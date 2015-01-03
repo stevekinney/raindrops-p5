@@ -28,20 +28,20 @@ function mouseClicked() {
 
 function Droplet(options) {
   options = options || {};
-  
+
   this.immortal = options.immortal || false;
-  
+
   this.height = options.height || 0;
   this.width = options.width || 0;
-  
+
   this.color = options.color || color(118, 199, 237, 50);
-  
+
   this.maxHeight = options.maxHeight || 50;
   this.maxWidth = options.maxWidth || 50;
-  
+
   this.noise = new p5.Oscillator('sine');
-  
-  this.ressurect(options.x, options.y);
+
+  this.resurrect(options.x, options.y);
 }
 
 Droplet.prototype.draw = function () {
@@ -74,7 +74,7 @@ Droplet.prototype.biggerize = function () {
 };
 
 Droplet.prototype.smallerize = function () {
-  this.height--; 
+  this.height--;
   this.width--;
   if (this.width === 0) {
     this.kill();
@@ -84,13 +84,13 @@ Droplet.prototype.smallerize = function () {
 
 Droplet.prototype.makeNoise = function () {
   var env = new p5.Env(0.1, 0.9, 0.5, 0, 0.1, 0.1, 1);
-  
+
   this.noise.f = this.x + 440;
   this.noise.amp(env);
   this.noise.start();
- 
+
   env.play();
-  
+
   return this;
 };
 
