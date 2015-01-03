@@ -19,12 +19,11 @@ function draw() {
 }
 
 function mouseClicked() {
-  var options = {
+  droplets.push(new Droplet({
     x: mouseX,
     y: mouseY,
     color: color(237, 59, 59, 180)
-  };
-  droplets.push(new Droplet(options));
+  }));
 }
 
 function Droplet(options) {
@@ -96,11 +95,11 @@ Droplet.prototype.makeNoise = function () {
 };
 
 Droplet.prototype.kill = function () {
-  if (this.immortal) { this.ressurect(); }
+  if (this.immortal) { this.resurrect(); }
   return this;
 };
 
-Droplet.prototype.ressurect = function (x, y) {
+Droplet.prototype.resurrect = function (x, y) {
   this.setOrigin(x, y);
   if (!this.immortal) { this.makeNoise(); }
   return this;
